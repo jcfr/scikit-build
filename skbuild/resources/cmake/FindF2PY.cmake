@@ -91,7 +91,7 @@ endif()
 file(GLOB _f2py_sources "${F2PY_INCLUDE_DIR}/*.c")
 add_library(_f2py_runtime_library STATIC ${_f2py_sources})
 target_include_directories(
-  _f2py_runtime_library 
+  _f2py_runtime_library
   PRIVATE ${PYTHON_INCLUDE_DIRS} ${NumPy_INCLUDE_DIRS}
 )
 
