@@ -110,7 +110,7 @@ function(add_f2py_target _name)
 
   set(generated_wrappers
     "${CMAKE_CURRENT_BINARY_DIR}/${_name}-f2pywrappers.f"
-    "${CMAKE_CURRENT_BINARY_DIR}/${_name}-f2pywrappers.f90"
+    "${CMAKE_CURRENT_BINARY_DIR}/${_name}-f2pywrappers2.f90"
     )
 
   get_filename_component(generated_file_dir ${generated_file} DIRECTORY)
@@ -138,10 +138,7 @@ function(add_f2py_target _name)
 
   # Add the command to run the compiler.
   add_custom_command(OUTPUT ${generated_file} ${generated_wrappers}
-                     COMMAND ${F2PY_EXECUTABLE}
-                     ARGS ${pyf_location}
-                     COMMAND ${CMAKE_COMMAND}
-                     ARGS -E touch ${generated_wrappers}
+                     COMMAND ${F2PY_EXECUTABLE} ${pyf_location}
                      DEPENDS ${_source_file}
                              ${_args_DEPENDS}
                      WORKING_DIRECTORY ${generated_file_dir}
