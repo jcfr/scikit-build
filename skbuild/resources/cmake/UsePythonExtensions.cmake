@@ -105,7 +105,7 @@ function(add_python_library _name)
   # Generate targets for all *.src files
   set(_processed )
   foreach(_source IN LISTS _sources)
-    if(${_source} MATCHES .pyf.src$ OR ${_source} MATCHES \\.f\\.src$)
+    if(${_source} MATCHES ".pyf.src$" OR ${_source} MATCHES "\\.f\\.src$")
       if(NOT NumPy_FOUND)
         message(
           FATAL_ERROR
@@ -122,7 +122,7 @@ function(add_python_library _name)
         COMMENT "Generating ${_source_we} from template ${_source}"
       )
       list(APPEND _processed ${_source_we})
-    elseif(${_source} MATCHES \\.c\\.src$)
+    elseif(${_source} MATCHES "\\.c\\.src$")
       if(NOT NumPy_FOUND)
         message(
           FATAL_ERROR
@@ -139,7 +139,7 @@ function(add_python_library _name)
         COMMENT "Generating ${_source_we} from template ${_source}"
       )
       list(APPEND _processed ${_source_we})
-    elseif(${_source} MATCHES \\.pyx\\.in$)
+    elseif(${_source} MATCHES "\\.pyx\\.in$")
       if(NOT Cython_FOUND)
         message(
           FATAL_ERROR
@@ -203,7 +203,7 @@ function(add_python_library _name)
         ARGS -h ${_name}.pyf -m ${_name} --overwrite-signature
              ${_sources_abs}
         DEPENDS ${_sources} ${_args_DEPENDS}
-        COMMENT "Generating ${_name} Fortan interface file"
+        COMMENT "Generating ${_name} Fortran interface file"
     )
     list(APPEND _sources ${_name}.pyf)
   endif()
